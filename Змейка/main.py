@@ -25,7 +25,7 @@ apple_y = random.randrange(0, size[1], BLOCK_SIZE)
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 
-snake = [(x, y), (x + BLOCK_SIZE, y), (x + BLOCK_SIZE*3, y)]
+snake = [(x, y)]
 
 while True:
 
@@ -52,13 +52,13 @@ while True:
         
     for i in range(len(snake)):
         if snake[i][0] > size[0]:
-            snake[i] = (0, snake[-1][i])
-        # if i[0] < 0:
-        #     snake[0] = (size[0], i[1])
-        # if i[1] > size[1]:
-        #     snake[0] = (i[0], 0)
-        # if i[1] < 0:
-        #     snake[0] = (i[0], size[1])
+            snake[i] = (0, snake[i][1])
+        if snake[i][0] < 0:
+            snake[i] = (size[0], snake[i][1])
+        if snake[i][1] > size[1]:
+            snake[i] = (snake[i][0], 0)
+        if snake[i][1] < 0:
+            snake[i] = (snake[i][0], size[1])
 
 
     screen.fill((180, 0, 180))
@@ -70,7 +70,7 @@ while True:
     if snake[0][0] == apple_x and snake[0][1] == apple_y:
         snake.append((apple_x, apple_y))
     print(snake)
-    clock.tick(15)
+    clock.tick(10)
 
 
     pygame.display.flip()
