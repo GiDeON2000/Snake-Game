@@ -61,6 +61,10 @@ while True:
             snake[i] = (snake[i][0], size[1])
 
 
+	if snake[0][0] == apple_x and snake[0][1] == apple_y:
+        snake.append((apple_x + dx, apple_y + dy))
+
+
     screen.fill((180, 0, 180))
     
     [pygame.draw.rect(screen, BLACK, (i, j, BLOCK_SIZE, BLOCK_SIZE)) for i, j in snake]
