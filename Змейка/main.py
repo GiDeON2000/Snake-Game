@@ -32,7 +32,10 @@ while True:
 		if event.type == pygame.QUIT:
 			sys.exit()
 
-	snake = [(i + dx, j + dy) for i, j in snake]
+	# snake = [(i + dx, j + dy) for i, j in snake]
+	x += dx
+	y += dy
+	snake.append((x, y))
 
 	keys = pygame.key.get_pressed()
 
